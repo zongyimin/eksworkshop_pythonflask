@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-demo-dep
+  namespace: eks-workshop
+  labels:
+    app: eks-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eks-demo
+  template:
+    metadata:
+      labels:
+        app: eks-demo
+    spec:
+      containers:
+      - name: eks-demo
+        image: <IMAGE_URL>
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
